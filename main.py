@@ -2,8 +2,6 @@
 import random
 from players import Player
 
-player_count = 1
-
 #Create the TicTacToe board
 def draw():
     board = ''
@@ -21,7 +19,7 @@ def draw():
     print (board)
 
 #Randomly picks who goes first
-def first_go(playerone_name, playertwo_name):
+def first_go():
     choice = random.randint(1,2)
     return choice
 
@@ -32,8 +30,17 @@ def first_go(playerone_name, playertwo_name):
 
 def main():
     print("Hi! Welcome to a TicTacToe.")
-    playerone = Player(player_count)
-    playertwo = Player(player_count)
+    player_count = 0
+    while player_count <2:
+        if player_count == 1:
+            playertwo = Player(player_count)
+            player_count += 1
+            print(player_count)
+        elif player_count == 0:
+            playerone = Player(player_count)
+            player_count += 1
+            print(player_count)
+    print(f"Score are currently:\n{playerone.name} : {playerone.score}\n{playertwo.name} : {playertwo.score}")
     if first_go() == 1:
         print(f"{playerone.name} goes first!")
     else:
